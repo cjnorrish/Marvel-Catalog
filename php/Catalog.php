@@ -17,15 +17,15 @@
     foreach($xml->children() as $xml){
           echo"
           <center>
-          <div class='movieContainer'>
-              <div class='movieTitle'>
-              <img class='images' src=$xml->image>
-                  <h3>$xml->title</h3>
-              </div>
-          </div>
+            <div class='movieContainer'>
+                        <img class='images' src=$xml->image>
+                        <h3>$xml->title</h3>
+            </div>
           </center>";
     }
+    echo"<div id='sort-container'></div>";
   echo"</div>";
+
 ?>
 
 </body>
