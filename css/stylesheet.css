@@ -3,8 +3,7 @@
     --border-Color:yellow;
     --header--Color:#BD1E1E;
     --movies-Color: #761622;
-    --hoverMovieColor :rgb(27, 27, 154); 
-
+    --hoverMovieColor:rgb(27, 27, 154); 
 }
 
 body{
@@ -82,4 +81,12 @@ h3{
     margin-left: -255px; 
     background: rgba(58, 81, 164, 0.7);
     border: 1px solid #000000;
+}
+
+.error-msg{
+    display:none;
+}
+
+.grid-box{
+    
 }
