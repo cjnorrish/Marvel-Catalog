@@ -16,21 +16,25 @@ body{
     width: 10rem;
     height: 15rem;
     margin-top: 0.8rem;
-   border-radius: 8%;
+   border-radius: 15px;
+   transition-duration: 0.35s;
 
 }
 
 .movieContainer{
     border: 1px solid var(--border-Color);
-    border-radius: 8%;
+    border-radius: 15px;
     float:left;
     width: 12.5rem;
     margin-left: 25px;
     margin-right: 25px;
     margin-bottom: 23px;
     background-color: var(--movies-Color);
-    transition-duration: 0.25s;
+    transition-duration: 0.35s;
     color: white;
+    box-shadow: 1px 1px  #fffdfd,
+                -4px -4px 2px #000000
+    ;
 }
 
 .movieContainer:hover,.images:hover{
@@ -62,7 +66,7 @@ h1{
     font-weight:bold;
     font-family:var(--fontStyle);
     mix-blend-mode: normal;
-    text-shadow: -2px 2px 0px #221F1F, -3.5px 3.5px 0px rgba(0, 0, 0, 0.5)
+    text-shadow: 0 1px hsl(0, 18%, 90%), -3px 3px 0px #221F1F, -4px 4px 0px rgba(0, 0, 0, 0.5)
 }
 
 h3{
@@ -76,13 +80,16 @@ h3{
     position: fixed;
     margin-top: 5%;
     width: 12.5rem;
-    height:55%;
+    height:60%;
     left: 100%;
     padding: 15px;
     border-radius: 20px;
     margin-left: -255px; 
     background: rgba(58, 81, 164, 0.7);
-    border: 1px solid #000000;
+    box-shadow: 1px 1px  #97b6db,
+    2px 2px  #fffdfd,
+    -4px -4px 2px #000000
+;
 }
 
 .error-msg{
@@ -104,10 +111,18 @@ label,h2,h4{
     color: white;
     font-weight: lighter;
     font-family: var(--fontStyle);
+    text-shadow: 0 1px hsl(0, 18%, 90%), 
+    0 2px rgb(0, 0, 69), 
+    0 1px hsl(0, 0%, 30%);
 }
 
 h2{
     font-size: 2rem;
+    color: var(--border-Color);
+    text-shadow: 0 1px hsl(0, 18%, 90%), 
+    0 2px rgb(0, 0, 69), 
+    0 1px hsl(0, 0%, 30%);
+    letter-spacing: 0.35rem;
 }
 
 #sort-button{
@@ -153,6 +168,9 @@ h2{
     border: 1px solid var(--border-Color);
     display: grid;
     grid-template-columns: 0.8fr 1.5fr;
+    box-shadow: 1.2px 1.2px  #fffdfd,
+    -4.5px -4.5px 2px #000000
+;
 }
 
 .grid-child1{

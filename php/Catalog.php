@@ -6,6 +6,7 @@
 <body>
 
 <?php
+    $x=0;
     $xml=simplexml_load_file("../xml/catalog.xml") or die("Error Cannot create object");
     echo"<div class='header'>
     <h1>MARVEL INFINITY SAGA</h1>
@@ -13,14 +14,19 @@
 
     echo"<div id='marvelMovies'>";
         foreach($xml->children() as $xml){
-                echo"
+            $mName=$xml->title;
+            $img =$xml->image;
+            $imdbR=$xml->rating;
+            $director=$xml->director;
+            $MVlength =$xml->length; 
+            echo"
                 <center>
-                <a href='Details.php'>
-                    <div class='movieContainer'>
-                                <img class='images' src=$xml->image>
-                                <h3>$xml->title</h3>
-                    </div>
-                </a>
+                    <a href='Details.php?t=$mName&rt=$imdbR&img=$img&dt=$director&l=$MVlength'>
+                        <div class='movieContainer'>
+                                <img class='images' src=$img>
+                                    <h3>$mName</h3>            
+                        </div>
+                    </a>
                 </center>";
         }
         echo"<div id='sort-container'>

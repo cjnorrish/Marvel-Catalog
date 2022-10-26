@@ -5,26 +5,29 @@
 </head>
 <body>
 <?php
-    echo"<div class='header'>
+  isset($_GET['img']); 
+  isset($_GET['t']);
+  isset($_GET['rt']);
+  isset($_GET['dt']); 
+  isset($_GET['l']); 
+  
+?>
+    <div class='header'>
         <h1>MARVEL INFINITY SAGA</h1>
         </div>
         
         <div class='selectedMovie'> 
 
-           <div class='grid-child1'><img src='../images/movie1.jpg' alt='Selected movie detail' id='detail-img'></div>
+           <div class='grid-child1'><img src=<?php echo $_GET['img']; ?> alt='Selected movie detail' id='detail-img'></div>
            <div class='grid-child1'id=movie-details> 
-                <h2>Title</h2><hr>
-                <h4>Director : <span id='director'><span></h4> 
-                <h4>Movie Length : <span id='movieSpan'><span></h4> 
-                <h4>IMDB Rating : <span id='rating'><span></h4> 
+                <h2> <?php echo $_GET['t']; ?> </h2><hr>
+                <h4>Director : <span id='director'> <?php echo $_GET['dt']; ?><span></h4> 
+                <h4>Movie Length : <span id='movieSpan'> <?php echo $_GET['l']; ?><span></h4> 
+                <h4>IMDB Rating : <span id='rating'> <?php echo $_GET['rt']; ?><span></h4> 
 
                 <form method='POST' action='Catalog.php'><input type='submit' value='Back to Movielist' id='btn-backtoHome'/></form>
            </div>
         </div>
-
-
-        ";
-
-?>
+    
 </body>
 </html>
