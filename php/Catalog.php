@@ -50,7 +50,6 @@
                         <select id='ORDER' name='ORDER' class='search-block'>
                             <option name='order1' value='releaseDate'>Release Date</option>
                             <option name='order2' value='alphabetically'>Alphabetically</option>
-                            <option name='order3' value='rating'>Rating</option>
                         </select> 
                         </div>
                         
@@ -59,19 +58,18 @@
                         <select id='ORDERBY' name='ORDERBY' class='search-block'>
                             <option name='orderBy1' value='asc'>Ascending</option>
                             <option name='orderBy2' value='desc'>Descending</option>
-                            <option name='orderBy3' value='random'>Random</option>
                         </select> 
                         </div> 
 
                         <div class='grid-child'>
-                            <input type='submit' onlick="SubmitButton()" id='sort-button' name='submit' value='SORT' class='search-block'>
+                            <input type='submit' id='sort-button' name='submit' value='SORT' class='search-block'>
                         </div> 
                     </div>               
                 </form> 
             </div>
         
     <script type="text/javascript">
-        var input =  document.getElementById("inputID-search").value;
+        var input =  document.getElementById("inputID-search");
         console.log(input);
         
         var moviesContainer = document.querySelectorAll("center");
@@ -97,27 +95,121 @@
                     var movieDisplay = document.querySelectorAll(".movieholder")[i].innerHTML; 
                     console.log(movieDisplay + "movie :" + movieTitles.toLowerCase());
                     document.getElementById("marvelMovies").innerHTML = '';
-                    document.getElementById("marvelMovies").innerHTML=movieDisplay;
-                    
+                    document.getElementById("marvelMovies").innerHTML=movieDisplay;        
                 }
             }
         });
-    
+
         input.addEventListener('input', updateValue);
-
         function updateValue(e) {
-        log.textContent = e.target.value;
+            console.log(e.target.value);
+            var searchVal = e.target.value;
+            if(searchVal.length<4){
+                document.getElementById("marvelMovies").innerHTML=marvelDiv;
+            }
         }
 
-        function SubmitButton(event){
-            var textInput = document.getElementById("inputID-search").value;
-            var orderInput = document.getElementById("ORDER").value;
-            var orderByInput = document.getElementById("ORDERBY").value;
+    </script>  
+    
 
-            document.getElementById("header").innerHTML ="hello";
-        }
+    <script type="text/javascript">
+
+        document.getElementById("sort-button").addEventListener("click", function() {
+            var order_Byinput = document.getElementById("ORDERBY").value;
+            var order_input = document.getElementById("ORDER").value;
+            var movietitles=[]; 
+            const originalTitles=[];
+            var imgURL=[];
+            var Atag=[];
+            for(var i = 0; i < 23; i++){
+                originalTitles[i] = document.querySelectorAll("h3")[i].innerText;
+            }
+
+            if (order_Byinput== "desc" && order_input == "releaseDate") {
+                for(var i = 0; i < 23; i++){
+                        
+                    movietitles[i] = document.querySelectorAll("h3")[i].innerText;
+                    Atag[i]= document.querySelectorAll("a")[i].getAttribute("href");
+                    imgURL[i]= document.querySelectorAll("img")[i].getAttribute("src");
+                        
+                }
+                    
+                var imageDescUrl;
+                var descTitle;
+                var descTag;
+                var indexDesc=0;
+                for(var j = 22; j > -1; j--){
+                    imageDescUrl=document.querySelectorAll("img")[j];
+                    descTitle = document.querySelectorAll(".movieContainer > h3")[j];
+                    descTag = document.querySelectorAll("a")[j];
+                    imageDescUrl.src = imgURL[indexDesc];
+                    console.log(movietitles[indexDesc]);
+                    descTitle.innerText =  movietitles[indexDesc];
+                    descTag.href =Atag[indexDesc];
+                    console.log(imageDescUrl);
+                    indexDesc++;
+                }
+        
+
+            }
+            else if(order_Byinput== "asc" && order_input == "releaseDate") {
+                document.getElementById("marvelMovies").innerHTML = '';
+                document.getElementById("marvelMovies").innerHTML = marvelDiv;
+            }
+
+            for(var i = 0; i < 23; i++){
+                movietitles[i] = document.querySelectorAll("h3")[i].innerText;
+                    
+            }
 
 
-    </script>        
+            if(order_input == "alphabetically" && order_Byinput== "desc") {
+
+                var descMovieTitles = movietitles.sort().reverse();
+
+                for(var x=0; x<23; x++){
+                    var descIndex = originalTitles.indexOf(descMovieTitles[x]);
+                    console.log("This is the index num of "+descMovieTitles[x]+" : "+descIndex);
+                    movietitles[x] = document.querySelectorAll("h3")[descIndex].innerText;
+                    Atag[x]= document.querySelectorAll("a")[descIndex].getAttribute("href");
+                    imgURL[x]= document.querySelectorAll("img")[descIndex].getAttribute("src");
+                }
+
+                for(var n=0; n<23; n++){
+                    imageDescUrl=document.querySelectorAll("img")[n];
+                    descTitle = document.querySelectorAll(".movieContainer > h3")[n];
+                    descTag = document.querySelectorAll("a")[n];
+                    imageDescUrl.src = imgURL[n];
+                    console.log(movietitles[n]);
+                    descTitle.innerText =  movietitles[n];
+                    descTag.href =Atag[n];
+                    console.log(imageDescUrl);
+                }
+            }
+            else if(order_Byinput== "asc" && order_input== "alphabetically"){
+                var descMovieTitles = movietitles.sort();
+
+                for(var x=0; x<23; x++){
+                    var descIndex = originalTitles.indexOf(descMovieTitles[x]);
+                    console.log("This is the index num of "+descMovieTitles[x]+" : "+descIndex);
+                    movietitles[x] = document.querySelectorAll("h3")[descIndex].innerText;
+                        Atag[x]= document.querySelectorAll("a")[descIndex].getAttribute("href");
+                        imgURL[x]= document.querySelectorAll("img")[descIndex].getAttribute("src");
+                }
+
+                for(var n=0; n<23; n++){
+                    imageDescUrl=document.querySelectorAll("img")[n];
+                    descTitle = document.querySelectorAll(".movieContainer > h3")[n];
+                    descTag = document.querySelectorAll("a")[n];
+                    imageDescUrl.src = imgURL[n];
+                    console.log(movietitles[n]);
+                    descTitle.innerText =  movietitles[n];
+                    descTag.href =Atag[n];
+                    console.log(imageDescUrl);
+                }
+            }
+        });
+
+    </script>
 </body>
 </html>
